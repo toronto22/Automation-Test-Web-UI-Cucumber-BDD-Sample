@@ -6,16 +6,13 @@ import io.github.toronto22.pages.InventoryPage;
 import io.github.toronto22.pages.LoginPage;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
-public class LoginSteps {
-    LoginPage loginPage = new LoginPage();
-    InventoryPage inventoryPage = new InventoryPage();
-
-    //action
-
+public class LoginSteps extends BaseSteps{
     @When("^user login with username and password$")
     public void userLoginWithUsernameAndPassword() {
         loginPage.openApplication();
+        driver = loginPage.getDriver();
         loginPage.Login("standard_user","secret_sauce");
         inventoryPage.setDriver(loginPage.getDriver());
     }
